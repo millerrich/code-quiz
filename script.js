@@ -1,15 +1,19 @@
+// click to start div
 const start = document.getElementById("start");
+// main quiz div set to display none initially
 const quiz = document.getElementById("quiz");
-const qImg = document.getElementById("qImage");
+// div for question to appear in
 const question = document.getElementById("question");
+// div for countdown timer
 const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
+// div for choices to answer question
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
-const progress = document.getElementById("progress");
-const scoreContainer = document.getElementById("scoreContainer");
-
+const choiceD = document.getElementById("D");
+// div to display if answer was correct or incorrect
+const scoreContainer = document.getElementById("correctIncorrect");
+// object containing question arrays
 let questions = [
     {
         question : "sample",
@@ -17,6 +21,7 @@ let questions = [
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
+        choiceD : "choice D",
         correct : "C"
     },
     {
@@ -25,6 +30,7 @@ let questions = [
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
+        choiceD : "choice D",
         correct : "C"
     },
     {
@@ -33,6 +39,7 @@ let questions = [
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
+        choiceD : "choice D",
         correct : "C"
     },
     {
@@ -41,6 +48,7 @@ let questions = [
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
+        choiceD : "choice D",
         correct : "C"
     },
     {
@@ -49,6 +57,8 @@ let questions = [
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
+        choiceD : "choice D",
         correct : "C"
     },
 ]
+
