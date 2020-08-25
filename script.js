@@ -17,7 +17,6 @@ const scoreContainer = document.getElementById("correctIncorrect");
 let questions = [
     {
         question : "sample",
-        imgSrc : "#",
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
@@ -26,7 +25,6 @@ let questions = [
     },
     {
         question : "sample 2",
-        imgSrc : "#",
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
@@ -35,7 +33,6 @@ let questions = [
     },
     {
         question : "sample 3",
-        imgSrc : "#",
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
@@ -44,7 +41,6 @@ let questions = [
     },
     {
         question : "sample 4",
-        imgSrc : "#",
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
@@ -53,7 +49,6 @@ let questions = [
     },
     {
         question : "sample 5",
-        imgSrc : "#",
         choiceA : "choice A",
         choiceB : "choice B",
         choiceC : "choice C",
