@@ -68,6 +68,19 @@ start.addEventListener("click", function() {
 });
 
 function countdown() {
-
-};
+    var timeLeft = 30;
+  
+    var timeInterval = setInterval(function() {
+      counter.textContent = timeLeft;
+      timeLeft--;
+  
+      if (timeLeft === 0) {
+        counter.textContent = "";
+        //insert call function for high score here
+        alert("quiz over");
+        clearInterval(timeInterval);
+      }
+  
+    }, 1000);
+  }
 
