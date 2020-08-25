@@ -56,4 +56,18 @@ let questions = [
         correct : "C"
     },
 ]
+// styling elements
+
+
+// event listener to start quiz on click
+start.addEventListener("click", function() {
+    start.style.display = "none";
+    quiz.style.display = "block";
+    countdown();
+
+});
+
+function countdown() {
+
+};
 
