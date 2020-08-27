@@ -173,7 +173,7 @@ enterButton.addEventListener("click", function (event) {
     // set new submission
     console.log(user);
     localStorage.setItem("user", JSON.stringify(user));
-
+    
     renderScore();
     
 });
@@ -181,13 +181,13 @@ function renderScore() {
     // get most recent submission
     var userScore = JSON.parse(localStorage.getItem("user"));
     console.log(userScore);
-    highScoreSave.push(userScore);
+    highScoreSave.push(userScore)
     highScoresList.innerHTML = "";
 
     for (var c = 0; c < highScoreSave.length; c++) {
         var currentIndex = highScoreSave[c];
         var li = document.createElement("li");
-        li.textContent = "inititals: " + currentIndex.initials + " Score: " + currentIndex.score;
+        li.textContent = "initials: " + currentIndex.initials + " Score: " + currentIndex.score;
         highScoresList.appendChild(li);
         console.log(currentIndex.initials + ": " + currentIndex.score);
     }
