@@ -17,10 +17,10 @@ var highScore = document.getElementById("highScore");
 var displayScore = document.getElementById("label");
 var initialInput = document.getElementById("initials");
 var enterButton = document.getElementById("enter");
-var msg = document.getElementById("msg");
-var msg2 = document.getElementById("msg2");
+var highScoresList = document.getElementById("highScoresList");
 // score variable
 var score = 0;
+var highScoreSave = [];
 
 // object containing question arrays
 let questions = [
@@ -117,23 +117,17 @@ function checkAnswer() {
     var b = questions[i].correct
     console.log(b);
     if (a === b) {
-        alert("correct!");
         score++;
+        alert("correct! your current score is: " + score);
         console.log("your current score is: " + score);
     } else {
         alert("incorrect!");
     }
     i++;
     console.log(i);
-    // if (i > questions.length - 1) {
-        // quiz.style.display = "none";
-        // highScore.style.display = "block";
-        
-    // } else {
     clearA();
     addQuestions();
     return
-    // }
 }
 
 // function to clear var a
@@ -168,7 +162,9 @@ choiceD.addEventListener("click", function () {
     console.log("clicked D")
     checkAnswer();
 });
-enterButton.addEventListener("click", function(event) {
+
+// High Score submit 
+enterButton.addEventListener("click", function (event) {
     event.preventDefault();
     var user = {
         initials: initialInput.value,
@@ -178,10 +174,21 @@ enterButton.addEventListener("click", function(event) {
     console.log(user);
     localStorage.setItem("user", JSON.stringify(user));
 
+    renderScore();
+    
+});
+function renderScore() {
     // get most recent submission
     var userScore = JSON.parse(localStorage.getItem("user"));
     console.log(userScore);
-    msg.textContent = userScore.initials;
-    msg2.textContent = userScore.score;
-    return
-});
+    highScoreSave.push(userScore);
+    highScoresList.innerHTML = "";
+
+    for (var c = 0; c < highScoreSave.length; c++) {
+        var currentIndex = highScoreSave[c];
+        var li = document.createElement("li");
+        li.textContent = "inititals: " + currentIndex.initials + " Score: " + currentIndex.score;
+        highScoresList.appendChild(li);
+        console.log(currentIndex.initials + ": " + currentIndex.score);
+    }
+}
