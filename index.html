@@ -22,7 +22,19 @@
             <div class="choice" id="D">D.</div>
         </div>
     </div>
-    <div id="correctIncorrect" style="display: none;"></div>
+    <div id="highScore" class="card" style="display: none;">
+        <h2>High Scores</h2>
+        <form method="POST">
+          <div class="input-group">
+            <label for="initials" id="label"></label>
+            <input type="text" name="initials" id="initials" placeholder="Enter Initials" />
+          </div>
+          <div id="msg"></div>
+          <div id="msg2"></div>
+          <button id="enter">Enter</button>
+        </form>
+        <div id="userHighScores"></div>
+      </div>
     <script src="script.js"></script>
 </body>
 

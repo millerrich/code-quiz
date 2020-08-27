@@ -5,7 +5,7 @@ const quiz = document.getElementById("quiz");
 // div for question to appear in
 var question = document.getElementById("question");
 // div for countdown timer
-const counter = document.getElementById("counter");
+var counter = document.getElementById("counter");
 // div for choices to answer question
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
@@ -13,80 +13,94 @@ const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 // set value for each button
 // div to display if answer was correct or incorrect
-const scoreContainer = document.getElementById("correctIncorrect");
+var highScore = document.getElementById("highScore");
+var displayScore = document.getElementById("label");
+var initialInput = document.getElementById("initials");
+var enterButton = document.getElementById("enter");
+var msg = document.getElementById("msg");
+var msg2 = document.getElementById("msg2");
+// score variable
+var score = 0;
+
 // object containing question arrays
 let questions = [
     {
-        question : "DOM stands for what?",
-        choiceA : "Document Object Model",
-        choiceB : "Dirty Odor Monster",
-        choiceC : "Direct Ordinance Master",
-        choiceD : "Dish Of Meatballs",
-        correct : "A"
+        question: "DOM stands for what?",
+        choiceA: "Document Object Model",
+        choiceB: "Dirty Odor Monster",
+        choiceC: "Direct Ordinance Master",
+        choiceD: "Dish Of Meatballs",
+        correct: "A"
     },
     {
-        question : "In javascript var stands for what?",
-        choiceA : "Varsity",
-        choiceB : "Varnish",
-        choiceC : "Variable",
-        choiceD : "Variety",
-        correct : "C"
+        question: "In javascript var stands for what?",
+        choiceA: "Varsity",
+        choiceB: "Varnish",
+        choiceC: "Variable",
+        choiceD: "Variety",
+        correct: "C"
     },
     {
-        question : "Which symbol is an alias for jQuery?",
-        choiceA : "*",
-        choiceB : "#",
-        choiceC : "&",
-        choiceD : "$",
-        correct : "D"    
+        question: "Which symbol is an alias for jQuery?",
+        choiceA: "*",
+        choiceB: "#",
+        choiceC: "&",
+        choiceD: "$",
+        correct: "D"
     },
     {
-        question : "Where in the HTML document should you usually link your external Javascript file?",
-        choiceA : "In the head",
-        choiceB : "At the top of body section",
-        choiceC : "At the bottom of the body section",
-        choiceD : "Within the CSS link",
-        correct : "C"
+        question: "Where in the HTML document should you usually link your external Javascript file?",
+        choiceA: "In the head",
+        choiceB: "At the top of body section",
+        choiceC: "At the bottom of the body section",
+        choiceD: "Within the CSS link",
+        correct: "C"
     },
     {
-        question : "What does HTML stand for?",
-        choiceA : "Helpful Teacher Masking Laughter",
-        choiceB : "Hyper Text Markup Language",
-        choiceC : "Hello Today Make Lasagna",
-        choiceD : "Head To Mask List",
-        correct : "B"
+        question: "What does HTML stand for?",
+        choiceA: "Helpful Teacher Masking Laughter",
+        choiceB: "Hyper Text Markup Language",
+        choiceC: "Hello Today Make Lasagna",
+        choiceD: "Head To Mask List",
+        correct: "B"
     },
 ]
-// styling elements
+
 
 
 // event listener to start quiz on click
-start.addEventListener("click", function() {
+start.addEventListener("click", function () {
     start.style.display = "none";
     quiz.style.display = "block";
     addQuestions();
     countdown();
 
 });
-
+// timer section
 function countdown() {
     var timeLeft = 30;
-  
-    var timeInterval = setInterval(function() {
-      counter.textContent = timeLeft;
-      timeLeft--;
-  
-      if (timeLeft === 0 || questions[i] === null) {
-        counter.textContent = "";
-        //insert call function for high score here
-        alert("quiz over");
-        clearInterval(timeInterval);
-      }
-  
-    }, 1000);
-  }
 
+    var timeInterval = setInterval(function () {
+        counter.textContent = timeLeft;
+        timeLeft--;
+
+        if (timeLeft === 0 || i > questions.length - 1) {
+            counter.textContent = "";
+            //insert call function for high score here
+            quiz.style.display = "none";
+            start.style.display = "none";
+            highScore.style.display = "block";
+            displayScore.innerText = "Your score is: " + score
+            clearInterval(timeInterval);
+        }
+
+    }, 1000);
+}
+
+// quiz questions section
 var i = 0;
+var a = "";
+
 function addQuestions() {
     var a = "";
     question.innerText = questions[i].question
@@ -94,53 +108,80 @@ function addQuestions() {
     choiceB.innerText = questions[i].choiceB
     choiceC.innerText = questions[i].choiceC
     choiceD.innerText = questions[i].choiceD
-    
+
 }
 
-var a = "";
-
+// function to see if selected answer is correct or incorrect
 function checkAnswer() {
-    
+
     var b = questions[i].correct
     console.log(b);
     if (a === b) {
         alert("correct!");
+        score++;
+        console.log("your current score is: " + score);
     } else {
         alert("incorrect!");
     }
     i++;
     console.log(i);
+    // if (i > questions.length - 1) {
+        // quiz.style.display = "none";
+        // highScore.style.display = "block";
+        
+    // } else {
     clearA();
     addQuestions();
     return
-    
+    // }
 }
+
+// function to clear var a
 function clearA() {
     a = a.substr(1)
     console.log(a);
     return
 }
-choiceA.addEventListener("click", function() {
+
+// event listeners for choice selections
+choiceA.addEventListener("click", function () {
     a += choiceA.getAttribute("id");
     console.log(a);
     console.log("clicked A")
     checkAnswer();
 });
-choiceB.addEventListener("click", function() {
+choiceB.addEventListener("click", function () {
     a += choiceB.getAttribute("id");
     console.log(a);
     console.log("clicked B");
     checkAnswer();
 });
-choiceC.addEventListener("click", function() {
+choiceC.addEventListener("click", function () {
     a += choiceC.getAttribute("id");
     console.log(a);
     console.log("clicked C")
     checkAnswer();
 });
-choiceD.addEventListener("click", function() {
+choiceD.addEventListener("click", function () {
     a += choiceD.getAttribute("id");
     console.log(a);
     console.log("clicked D")
     checkAnswer();
+});
+enterButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    var user = {
+        initials: initialInput.value,
+        score: score
+    };
+    // set new submission
+    console.log(user);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    // get most recent submission
+    var userScore = JSON.parse(localStorage.getItem("user"));
+    console.log(userScore);
+    msg.textContent = userScore.initials;
+    msg2.textContent = userScore.score;
+    return
 });
