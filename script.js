@@ -72,6 +72,7 @@ let questions = [
 start.addEventListener("click", function () {
     start.style.display = "none";
     quiz.style.display = "block";
+    highScoreSave = JSON.parse(localStorage.getItem("highScoreSave"));
     addQuestions();
     countdown();
 
@@ -170,18 +171,21 @@ enterButton.addEventListener("click", function (event) {
         initials: initialInput.value,
         score: score
     };
+    highScoreSave.push(user);
+
     // set new submission
     console.log(user);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("highScoreSave", JSON.stringify(highScoreSave));
     
     renderScore();
     
 });
 function renderScore() {
     // get most recent submission
-    var userScore = JSON.parse(localStorage.getItem("user"));
+    var userScore = JSON.parse(localStorage.getItem("highScoreSave"));
     console.log(userScore);
-    highScoreSave.push(userScore)
+
+   
     highScoresList.innerHTML = "";
 
     for (var c = 0; c < highScoreSave.length; c++) {
